@@ -3,48 +3,11 @@ package ProductDatabaseInFile;
 public class Product {
     private String name;
     private String producer;
-    private double price;
+    private String price;
 
-    public Product(String name, String producer, double price) {
+    public Product(String name, String producer, String price) {
         this.name = name;
         this.producer = producer;
         this.price = price;
-    }
-
-    public static String toString(String products, Object o) {
-        return products;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getProducer() {
-        return producer;
-    }
-
-    public void setProducer(String producer) {
-        this.producer = producer;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", producer='" + producer + '\'' +
-                ", price=" + price +
-                '}';
     }
 }

@@ -1,26 +1,25 @@
 package ProductDatabaseInFile;
 
+import CompanyStatistics.Employee;
+
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class Test {
     public static void main(String[] args) throws IOException {
-        Product[] productsTest = new Product[3];
-        productsTest[0] = new Product("FX-Marble", "Lożitej", 159.99);
-        productsTest[1] = new Product("OZA-Trackball", "Elegom", 135.49);
-        productsTest[2] = new Product("Alant", "Genzington", 175.78);
-        
-        
+        String[] strings = new String[3];
+        strings[0] = "nazwa1;producent1;cena1";
+        strings[1] = "nazwa2;producent2;cena2";
+        strings[2] = "nazwa3;producent3;cena3";
+
         String fileName = "testProductBoards.csv";
         try(
                 var fileWriter = new FileWriter(fileName);
                 var writer = new BufferedWriter(fileWriter)
         ) {
-            for (Product product : productsTest) {
-                writer.write(product + "\n");
+            for (String stringsOne : strings) {
+                writer.write(stringsOne + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -34,24 +33,20 @@ public class Test {
         ){
             StringBuilder stringBuffer = new StringBuilder();
             String eachLine =reader.readLine();
-            ArrayList<String> productArrayList = new ArrayList<>();
-            productArrayList.add(eachLine);
-            productArrayList.add(eachLine);
-            productArrayList.add(eachLine);
-            List<String> strings = productArrayList.stream().map(Test::apply).collect(Collectors.toList());
-            System.out.println(strings);
             while (eachLine != null){
                 stringBuffer.append(eachLine);
                 stringBuffer.append("\n");
                 eachLine = reader.readLine();
-
+                String[] split = eachLine.split(";");
+                Product product = new Product(split[0], split[1], split[2]);
+                Product[] products = new Product[3];
+                products[0] = new Product(split[0], split[1], split[2]);
+                products[1] = new Product(split[0], split[1], split[2]);
+                products[2] = new Product(split[0], split[1], split[2]);
+                System.out.println(Arrays.toString(products));
             }
             System.out.println(stringBuffer.toString());
         }
 
-    }
-
-    private static String apply(String products) {
-        return Product.toString(products, null);
     }
 }
