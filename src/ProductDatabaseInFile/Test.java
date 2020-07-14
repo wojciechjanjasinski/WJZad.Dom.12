@@ -1,7 +1,10 @@
 package ProductDatabaseInFile;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Test {
     public static void main(String[] args) throws IOException {
@@ -29,16 +32,26 @@ public class Test {
         var reader = new BufferedReader(fileReader)
 
         ){
-
             StringBuilder stringBuffer = new StringBuilder();
             String eachLine =reader.readLine();
+            ArrayList<String> productArrayList = new ArrayList<>();
+            productArrayList.add(eachLine);
+            productArrayList.add(eachLine);
+            productArrayList.add(eachLine);
+            List<String> strings = productArrayList.stream().map(Test::apply).collect(Collectors.toList());
+            System.out.println(strings);
             while (eachLine != null){
                 stringBuffer.append(eachLine);
                 stringBuffer.append("\n");
                 eachLine = reader.readLine();
+
             }
             System.out.println(stringBuffer.toString());
         }
 
+    }
+
+    private static String apply(String products) {
+        return Product.toString(products, null);
     }
 }

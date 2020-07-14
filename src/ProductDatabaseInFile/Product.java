@@ -11,6 +11,10 @@ public class Product {
         this.price = price;
     }
 
+    public static String toString(String products, Object o) {
+        return products;
+    }
+
     public String getName() {
         return name;
     }
