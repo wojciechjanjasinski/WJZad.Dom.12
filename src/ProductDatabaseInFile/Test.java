@@ -40,7 +40,6 @@ public class Test {
             for (String eachLine = reader.readLine(); eachLine!= null; eachLine = reader.readLine()){
                 stringBuffer.append(eachLine);
                 stringBuffer.append("\n");
-                eachLine = reader.readLine();
                 String[] split = eachLine.split(";");
                 double a =Double.parseDouble(split[2]);
                 Product[] products = new Product[3];
@@ -48,6 +47,7 @@ public class Test {
                 products[1] = new Product(split[0], split[1], a);
                 products[2] = new Product(split[0], split[1], a);
                 System.out.println(Arrays.toString(products));
+
             }
             System.out.println(stringBuffer.toString());
         }
