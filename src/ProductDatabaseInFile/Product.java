@@ -34,4 +34,13 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", producer='" + producer + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
