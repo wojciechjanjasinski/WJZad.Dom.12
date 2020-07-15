@@ -1,25 +1,30 @@
 package ProductDatabaseInFile;
 
-import CompanyStatistics.Employee;
-
 import java.io.*;
 import java.util.Arrays;
 
 
 public class Test {
     public static void main(String[] args) throws IOException {
-        String[] strings = new String[3];
-        strings[0] = "nazwa1;producent1;cena1";
-        strings[1] = "nazwa2;producent2;cena2";
-        strings[2] = "nazwa3;producent3;cena3";
+        Product[] productsOne = new Product[3];
+        productsOne[0] = new Product("Marfel-GJ", "Lożitej", 169.99);
+        productsOne[1] = new Product("Small", "Elegom", 199.99);
+        productsOne[2] = new Product("Matrel", "Kenżyngton", 220.99);
 
         String fileName = "testProductBoards.csv";
         try(
                 var fileWriter = new FileWriter(fileName);
                 var writer = new BufferedWriter(fileWriter)
         ) {
-            for (String stringsOne : strings) {
-                writer.write(stringsOne + "\n");
+            for (Product product : productsOne) {
+                writer.write(product + "\n");
+                writer.write(product.getName());
+                writer.write(" ");
+                writer.write(product.getProducer());
+                writer.write(" ");
+                writer.write(String.valueOf(product.getPrice()));
+                writer.newLine();
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,7 +43,6 @@ public class Test {
                 stringBuffer.append("\n");
                 eachLine = reader.readLine();
                 String[] split = eachLine.split(";");
-                Product product = new Product(split[0], split[1], split[2]);
                 Product[] products = new Product[3];
                 products[0] = new Product(split[0], split[1], split[2]);
                 products[1] = new Product(split[0], split[1], split[2]);
