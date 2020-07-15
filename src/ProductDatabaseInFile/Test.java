@@ -18,9 +18,9 @@ public class Test {
         ) {
             for (Product product : productsOne) {
                 writer.write(product.getName());
-                writer.write(" ");
+                writer.write("");
                 writer.write(product.getProducer());
-                writer.write(" ");
+                writer.write("");
                 writer.write(String.valueOf(product.getPrice()));
                 writer.newLine();
 
